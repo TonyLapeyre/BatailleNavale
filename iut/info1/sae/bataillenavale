@@ -1,0 +1,64 @@
+/*
+ * Partie.java                                      10 mai 2023
+ * IUT Rodez, info1 2022-2023, pas de copyright ni "copyleft" 
+ */
+package iut.info1.sae.bataillenavale;
+
+import java.util.Scanner;
+
+/** 
+ * Jeux de la bataille navale
+ * Le jeux comporte deux joueurs qui possèdent chacun une flotte de 5 bateaux
+ * Le but du jeux et de toucher et couler tout les bateaux adverse
+ * 
+ * @author tom.jammes
+ */
+public class Partie {
+    
+    final private boolean partieFini;
+    
+    final private Joueur vainqueur;
+
+    /**
+     * Constructeur de la partie
+     * 
+     * @param partieFini 
+     */
+    public Partie(boolean partieFini) {
+        this.partieFini = partieFini;
+    }
+    
+    /** 
+     * Définit la partie comme finie et définit le nom du vainqueur 
+     * 
+     * @param vainqueur Joueur qui a gagné la partie
+     */
+    private void setPartieFini(Joueur vainqueur) {
+        this.partieFini = true;
+        this.vainqueur = vainqueur();
+    }
+
+    /**
+     * Fonction de lancement du jeux
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+        
+        Scanner entreeClavier = new Scanner(System.in);
+        
+        /* Création du jeu */
+        Partie batailleNavale = new Partie(false);       
+        
+        String pseudoJoueur1,
+               pseudoJoueur2;
+        int[][] placementBateauxJoueur1 = new int[10][10],
+                placementBateauxJoueur2;
+        
+        System.out.print("Entrez votre pseudo : ");
+        pseudoJoueur1 = entreeClavier.nextLine();          
+        
+        /* Création des joueurs */
+        Joueur joueur1 = new Joueur(pseudoJoueur1, placementBateauxJoueur1);
+    }
+}

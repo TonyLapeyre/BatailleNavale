@@ -1,0 +1,101 @@
+/*
+ * Joueur.java                                      10 mai 2023
+ * IUT Rodez, info1 2022-2023, pas de copyright ni "copyleft" 
+ */
+package iut.info1.sae.bataillenavale;
+
+import java.util.*;
+
+/** 
+ * Création d'une classe Joueur pour le projet de SAE de bataille navale
+ * @author rayanibrahime
+ *
+ */
+
+public class Joueur {
+    /**valeur de pseudo du joueur*/
+    private String pseudo;
+    
+    /**tirEffectue nouvelle valeur de tirEffectue */
+    @SuppressWarnings("unused") 
+    private boolean[][] tirEffectue;
+    
+    /**
+     * On référencera dans cette liste les tirs ratés
+     */
+    @SuppressWarnings("unused")
+    private List<Integer> tirRate;
+    
+    /**
+     * On référencera les tirs réussis.
+     */
+    @SuppressWarnings("unused")
+    private List<Integer> tirReussi;
+    
+    private final boolean[][] TIR_EFFECTUE = {
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false}
+    };
+    
+    
+    /**
+     * Création d'un joueur avec un pseudo. Il va choisir
+     * des postions pour ses bateaux. Pendant la partie il va effectuer des tirs.
+     * Si le tir a touché le boolean est égale true et false dans le cas inverse.
+     * @param pseudo 
+     * @param tirEffectue 
+     * @param placementBateaux 
+     */
+    public Joueur(String pseudo) {
+        this.pseudo = pseudo;
+        this.tirEffectue = TIR_EFFECTUE;
+    }
+
+
+    /** @return valeur de pseudo */
+    public String getPseudo() {
+        return pseudo;
+    }
+
+
+    /** @return valeur de tirEffectue */
+    public boolean[][] getTirEffectue() {
+        return TIR_EFFECTUE;
+    }
+
+    /** @param tirRate nouvelle valeur de tirRate */
+    public void setTirRate(List<Integer> tirRate) {
+        this.tirRate = tirRate;
+    }
+
+
+    /** @param tirReussi nouvelle valeur de tirReussi */
+    public void setTirReussi(List<Integer> tirReussi) {
+        this.tirReussi = tirReussi;
+    }
+    
+    /**
+     * Cette méthode donne les cordonnées du tir du joueur 
+     * @param x 
+     * @param y
+     */
+    public static void tirer(int x, int y) {
+        tirer(x,y);
+    }
+    
+    /**
+     * Vérifie que le tir a été réalisé
+     * @return true
+     */
+    public static boolean verifierTir(){
+        return true;
+    }
+}

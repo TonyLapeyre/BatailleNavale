@@ -4,6 +4,7 @@
  */
 package iut.info1.sae.bataillenavale.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -13,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import iut.info1.sae.bataillenavale.Joueur;
-import iut.info1.sae.bataillenavale.Tir;
 
 /** 
  * Classe de test de la classe Joueur
@@ -26,9 +26,25 @@ class TestJoueur {
      * Liste contenant les données de joueurs
      */
     private List <Joueur> listeJoueurs;
-
-    /** TODO comment method role
-     * @throws java.lang.Exception
+    
+    /**
+     * Tableau testant que le joueur n'a effectué aucun tir
+     */
+    private boolean[][] TIR_INITIALE = {
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false},
+    };
+    
+    /** 
+     * Liste de joueurs
      */
     @BeforeEach
     void initialiseJoueur() {
@@ -36,11 +52,10 @@ class TestJoueur {
    /*0*/listeJoueurs.add(new Joueur("Atom"));
    /*1*/listeJoueurs.add(new Joueur("aispikinglish"));
    /*2*/listeJoueurs.add(new Joueur("Nivak"));
-    }
-
+   }
     
     /**
-     * Test method for {@link sae.bataillenavale.Joueur#getPseudo()}.
+     * Test method for {@link iut.info1.sae.bataillenavale.Joueur#getPseudo()}.
      */
     @Test
     void testGetPseudo() {
@@ -53,19 +68,21 @@ class TestJoueur {
     }
 
     /**
-     * Test method for {@link sae.bataillenavale.Joueur#getTirEffectuer()}.
+     * Test method for {@link iut.info1.sae.bataillenavale.Joueur#getCaseTiree()}.
      */
     @Test
-    void testGetTirEffectuer() {
-        fail("Not yet implemented");
+    void testGetCaseTiree() {
+        assertArrayEquals(listeJoueurs.get(1).getCasesTirees(), TIR_INITIALE);
     }
 
     /**
-     * Test method for {@link sae.bataillenavale.Joueur#setTirEffectuer(boolean[][])}.
+     * Test method for {@link iut.info1.sae.bataillenavale.Joueur#setTirEffectuer(boolean[][])}.
      */
     @Test
     void testSetTirEffectuer() {
-        fail("Not yet implemented");
+        assertEquals(listeJoueurs.get(0).getCasesTirees()[2][5], false);
+        listeJoueurs.get(2).tirer(2,5);
+        assertEquals(listeJoueurs.get(0).getCasesTirees()[2][5], true);
     }
 
     /**
@@ -91,5 +108,5 @@ class TestJoueur {
         assertThrows(IllegalArgumentException.class, ()-> listeJoueurs.get(0).tirer(2,5));
         assertThrows(IllegalArgumentException.class, ()-> listeJoueurs.get(0).tirer(8,9));
         listeJoueurs.get(0).tirer(3,4);
-    }
+    } 
 }

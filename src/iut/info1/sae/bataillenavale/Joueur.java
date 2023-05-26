@@ -27,17 +27,17 @@ public class Joueur {
     /**
      * Tableau qui initialise casesTirees
      */
-    final private boolean[][] TIR_INITIALE = {
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
+    final private static boolean[][] TIR_INITIALE = {
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
+        {false,false,false,false,false,false,false,false,false,false},
     };
     
     /**
@@ -84,9 +84,18 @@ public class Joueur {
      * @param x abscisse du tir
      * @param y ordonné du tir
      */
-    public void setTirEffectuer(int x, int y) {
+    private void setTirEffectuer(int x, int y) {
         this.casesTirees[x][y] = true;
     }
+    
+    /**
+     * Vérifier que le tir du joueur à touche la cible 
+     * @return true si le joueur
+     */
+    private boolean verifierTirReussi() {
+        return true;//STUB
+    }
+    
     /** @return une liste avec les bateaux non coulés*/
     //public Bateau getListeBateauRestant() {
         //return listeBateauRestant;
@@ -106,6 +115,6 @@ public class Joueur {
             
         }
         this.setTirEffectuer(x,y);            
-        listeTirsEffectue.add(new Tir(x,y,false));
+        this.listeTirsEffectue.add(new Tir(x,y,false));
     }
 }

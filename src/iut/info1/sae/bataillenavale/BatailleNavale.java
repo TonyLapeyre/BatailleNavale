@@ -1,63 +1,48 @@
 /*
- * CompterLettre.java                                      22 mai 2023
- * IUT Rodez, info1 2023-2023, pas de copyrigth ni de "copyleft"
+ * BatailleNavale.java                                      10 mai 2023
+ * IUT Rodez, info1 2022-2023, pas de copyright ni "copyleft" 
  */
 package iut.info1.sae.bataillenavale;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.text.*;
-import javafx.scene.control.*;
- 
-/**
-* Cette classe est la classe principale d'une application JavaFX.
-*
-* La fenêtre est dotée d'une zone de saisie dans laquelle l'utilisateur sera invité
-* à saisir une phrase et une lettre à chercher. 
-* L'application affichera ensuite, lors d'un clic sur le bouton
-* "Compter", le nombre d'occurence de la lettre dans cette phrase.
-* Un clic sur le bouton "Effacer" effacera les valeurs affichée et saisie.
-* 
-* @author tom.jammes
-* @version 1.0
-*/
-public class BatailleNavale extends Application {
+/** 
+ * Jeux de la bataille navale
+ * Le jeux comporte deux joueurs qui possèdent chacun une flotte de 5 bateaux
+ * Le but du jeux et de toucher et couler tout les bateaux adverse
+ * 
+ * @author tom.jammes
+ */
+public class BatailleNavale {
     
- @Override
- public void start(Stage primaryStage) throws Exception {
+    private boolean partieFini;
+    
+//    private Joueur vainqueur;
 
- /* créaton d'un chargeur de code FXML */
- FXMLLoader chargeurFXML = new FXMLLoader();
+    /**
+     * Constructeur de la partie
+     * 
+     * @param partieFini 
+     */
+    public BatailleNavale(boolean partieFini) {
+        this.partieFini = partieFini;
+    }
+    
+    /** 
+     * Définit la partie comme finie et définit le nom du vainqueur 
+     * 
+     * @param vainqueur Joueur qui a gagné la partie
+     */
+    private void setPartieFini(/*Joueur vainqueur*/) {
+        this.partieFini = true;
+//        this.vainqueur = vainqueur();
+    }
 
- /*
- * on indique au chargeur la vue à charger
- */
- chargeurFXML.setLocation(getClass().getResource("accueil.fxml"));
+    /**
+     * Fonction de lancement du jeux
+     * 
+     * @param args
+     */
+    public static void main(String[] args) {
+        
 
- Parent racine = chargeurFXML.load();
-
- Scene scene = new Scene(racine);
- 
- scene.getStylesheets().add(getClass().getResource("accueil.css").toExternalForm());
- 
- 
- 
- 
- // on définit le titre, la hauteur et la largeur de la fenêtre
- primaryStage.setTitle("Bataille Navale");
- primaryStage.setHeight(1000);
- primaryStage.setWidth(1800);
- primaryStage.setScene(scene);
- primaryStage.show();
- }
- /**
- * Lancement de l'application
- * @param args argument non utilisé
- */
- public static void main(String[] args) {
- launch(args);
- }
-} 
+    }
+}

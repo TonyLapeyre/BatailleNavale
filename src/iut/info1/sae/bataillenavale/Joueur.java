@@ -10,7 +10,6 @@ import java.util.*;
  * Cette classe va permettre de créer un joueur pour jouer à la bataille navale
  * @author rayanibrahime
  * @author tom.jammes
- *
  */
 public class Joueur {
     
@@ -25,20 +24,9 @@ public class Joueur {
     private boolean[][] casesTirees;
     
     /**
-     * Tableau qui initialise casesTirees
+     * Taille de la grille standard
      */
-    final private static boolean[][] TIR_INITIALE = {
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-        {false,false,false,false,false,false,false,false,false,false},
-    };
+    private final int TAILLE_STANDARD = 10;
     
     /**
      * Liste des tirs effectué
@@ -60,23 +48,30 @@ public class Joueur {
      */
     public Joueur(String pseudo) {
         this.pseudo = pseudo;
-        this.casesTirees = TIR_INITIALE;
+        
         //this.listeBateauRestant = listeBateauRestant;
+        this.casesTirees = new boolean[TAILLE_STANDARD][TAILLE_STANDARD];
+        
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                this.casesTirees[x][y] = false;
+            }
+        }
     }
 
     /** @return valeur de pseudo */
     public String getPseudo() {
-        return pseudo;
+        return this.pseudo;
     }
 
     /** @return valeur de casesTirees */
     public boolean[][] getCasesTirees() {
-        return casesTirees;
+        return this.casesTirees;
     }
     
     /** @return valeur de nbTirEffectué */
     public int getNbTirEffectue() {
-        return nbTirEffectue;
+        return this.nbTirEffectue;
     }
 
     /** 

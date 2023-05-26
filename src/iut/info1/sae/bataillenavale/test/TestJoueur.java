@@ -72,7 +72,7 @@ class TestJoueur {
      */
     @Test
     void testGetCaseTiree() {
-        assertArrayEquals(listeJoueurs.get(1).getCasesTirees(), TIR_INITIALE);
+        assertArrayEquals(TIR_INITIALE, listeJoueurs.get(1).getCasesTirees());
     }
 
     /**
@@ -80,9 +80,9 @@ class TestJoueur {
      */
     @Test
     void testSetTirEffectuer() {
-        assertEquals(listeJoueurs.get(0).getCasesTirees()[2][5], false);
+        assertEquals(listeJoueurs.get(2).getCasesTirees()[2][5], false);
         listeJoueurs.get(2).tirer(2,5);
-        assertEquals(listeJoueurs.get(0).getCasesTirees()[2][5], true);
+        assertEquals(listeJoueurs.get(2).getCasesTirees()[2][5], true);
     }
 
     /**

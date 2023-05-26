@@ -1,0 +1,18 @@
+@font-face { 
+    font-family: "Army";
+     src: url('ARMY_RUST.ttf');
+}
+
+.root {
+	-fx-background-color : #CFE5FF;
+}
+.bouton {
+    -fx-background-color : #00359B;
+    -fx-background-radius : 15;
+}
+.titre {
+    -fx-font-family : "Army";
+}
+.image {
+	-fx-background-radius: 50;
+}

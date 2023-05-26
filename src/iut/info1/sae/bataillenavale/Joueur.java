@@ -2,7 +2,7 @@
  * Joueur.java                                      26 mai 2023
  * IUT Rodez, info1 2022-2023, pas de copyright ni "copyleft" 
  */
-package sae.bataillenavale;
+package iut.info1.sae.bataillenavale;
 
 import java.util.*;
 
@@ -26,7 +26,7 @@ public class Joueur {
     /**
      * Tableau qui initialise tirEffectuer
      */
-    final private boolean[][] TIR_INITIALE = {
+    final private static boolean[][] TIR_INITIALE = {
             {false,false,false,false,false,false,false,false,false,false},
             {false,false,false,false,false,false,false,false,false,false},
             {false,false,false,false,false,false,false,false,false,false},
@@ -60,13 +60,24 @@ public class Joueur {
 
     /** @return valeur de tirEffectuer */
     public boolean[][] getTirEffectuer() {
-        return tirEffectuer;
+        return this.tirEffectuer;
     }
 
-    /** @param tirEffectuer nouvelle valeur de tirEffectuer */
-    public void setTirEffectuer(boolean[][] tirEffectuer) {
-        this.tirEffectuer = tirEffectuer;
+    /** @param x abscisse 
+     *  @param y ordonnée
+     *  @param tirEffectuer nouvelle valeur de tirEffectuer */
+    public void setTirEffectuer(int x, int y) {
+            this.tirEffectuer[x][y] = true;
     }
+    
+    /**
+     * Vérifier que le tir du joueur à touche la cible 
+     * @return true si le joueur
+     */
+    private boolean verifierTirReussi() {
+        return true;//STUB
+    }
+    
     /** @return une liste avec les bateaux non coulés*/
     //public Bateau getListeBateauRestant() {
         //return listeBateauRestant;

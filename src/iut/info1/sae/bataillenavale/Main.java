@@ -23,39 +23,55 @@ import javafx.scene.Scene;
 * @version 1.0
 */
 public class Main extends Application {
-    
- @Override
- public void start(Stage primaryStage) throws Exception {
-
- /* créaton d'un chargeur de code FXML */
- FXMLLoader chargeurFXML = new FXMLLoader();
-
- /*
- * on indique au chargeur la vue à charger
- */
- chargeurFXML.setLocation(getClass().getResource("vuesFXML/accueil.fxml"));
-
- Parent racine = chargeurFXML.load();
-
- Scene scene = new Scene(racine);
- 
- scene.getStylesheets().add(getClass().getResource("accueil.css").toExternalForm());
- 
- 
- 
- 
- // on définit le titre, la hauteur et la largeur de la fenêtre
- primaryStage.setTitle("Bataille Navale");
- primaryStage.setHeight(1000);
- primaryStage.setWidth(1800);
- primaryStage.setScene(scene);
- primaryStage.show();
- }
- /**
- * Lancement de l'application
- * @param args argument non utilisé
- */
- public static void main(String[] args) {
- launch(args);
- }
+     
+     private static Stage fenetrePrincipale;
+     private static Scene sceneTest;    
+     
+     @Override
+     public void start(Stage primaryStage) throws Exception {
+        
+         /* créaton d'un chargeur de code FXML */
+         FXMLLoader chargeurFXML = new FXMLLoader();
+         /*
+          * on crée la vue de l'accueil
+          */
+         chargeurFXML.setLocation(getClass().getResource("vuesFXML/accueil.fxml"));
+        
+         Parent accueil = chargeurFXML.load();
+        
+         Scene sceneAccueil = new Scene(accueil);
+         
+         sceneAccueil.getStylesheets().add(getClass().getResource("accueil.css").toExternalForm());
+         
+         /* On créer la vue test */
+         FXMLLoader chargeurFXMLTest = new FXMLLoader();
+         chargeurFXMLTest.setLocation(getClass().getResource("vuesFXML/test.fxml"));
+        
+         Parent test = chargeurFXMLTest.load();
+        
+         sceneTest = new Scene(test);
+         
+         // on définit le titre, la hauteur et la largeur de la fenêtre
+         primaryStage.setTitle("Bataille Navale");
+         primaryStage.setHeight(1000);
+         primaryStage.setWidth(1800);
+         primaryStage.setScene(sceneAccueil);
+         fenetrePrincipale = primaryStage;
+         primaryStage.show();
+     }
+     
+     /** TODO comment method role
+     * 
+     */
+     public static void chargerTest() {
+        fenetrePrincipale.setScene(sceneTest);
+     }
+     
+     /**
+     * Lancement de l'application
+     * @param args argument non utilisé
+     */
+     public static void main(String[] args) {
+     launch(args);
+     }
 } 

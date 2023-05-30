@@ -1,5 +1,5 @@
 package application;
-	
+        
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -20,7 +20,8 @@ public class Visuel extends Application {
              *  on indique au chargeur quelle est la vue fxml qu'il devra charger :
              *  ici VueExemple1.fxml
              */
-            chargeurFXML.setLocation(getClass().getResource("ProtoVisuel.fxml"));
+            chargeurFXML.setLocation(getClass().getResource("Regle.fxml"));
+            
     /*
     * création d'un objet de type parent qui est initialisé avec le résultat du
     * chargement de la vue FXML. Ou dit autrement le code écrit en FXML est transformé * en un objet Java
@@ -28,18 +29,20 @@ public class Visuel extends Application {
     Parent racine = chargeurFXML.load();
     
     Scene scene = new Scene(racine);
+    
+    scene.getStylesheets().add(getClass().getResource("accueil.css").toExternalForm());
             // on définit le titre, la hauteur et la largeur de la fenêtre
-            primaryStage.setTitle("Compter caractères");
-            primaryStage.setHeight(300);
-            primaryStage.setWidth(500);
-            primaryStage.setScene(scene);
-            primaryStage.show();
+    primaryStage.setTitle("Bataille Navale");
+    primaryStage.setHeight(1000);
+    primaryStage.setWidth(1800);
+    primaryStage.setScene(scene);
+    primaryStage.show();
     }
-	
-	/** TODO comment method role
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		launch(args);
-	}
+        
+        /** TODO comment method role
+         * @param args
+         */
+        public static void main(String[] args) {
+                launch(args);
+        }
 }

@@ -5,6 +5,7 @@
 package iut.info1.sae.bataillenavale;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
@@ -25,31 +26,29 @@ import javafx.scene.Scene;
 public class Main extends Application {
      
      private static Stage fenetrePrincipale;
-     private static Scene sceneTest;    
+     private static Scene sceneRegle;
+     private static Scene sceneAccueil;
      
      @Override
      public void start(Stage primaryStage) throws Exception {
         
-         /* créaton d'un chargeur de code FXML */
+         /* on crée la vue de l'accueil */
          FXMLLoader chargeurFXML = new FXMLLoader();
-         /*
-          * on crée la vue de l'accueil
-          */
+
          chargeurFXML.setLocation(getClass().getResource("vuesFXML/accueil.fxml"));
         
          Parent accueil = chargeurFXML.load();
         
-         Scene sceneAccueil = new Scene(accueil);
+         sceneAccueil = new Scene(accueil);
          
-         sceneAccueil.getStylesheets().add(getClass().getResource("accueil.css").toExternalForm());
+         sceneAccueil.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
-         /* On créer la vue test */
-         FXMLLoader chargeurFXMLTest = new FXMLLoader();
-         chargeurFXMLTest.setLocation(getClass().getResource("vuesFXML/test.fxml"));
-        
-         Parent test = chargeurFXMLTest.load();
-        
-         sceneTest = new Scene(test);
+         /* On créer la vue règles */
+         FXMLLoader chargeurFXMLRegle = new FXMLLoader();
+         chargeurFXMLRegle.setLocation(getClass().getResource("vuesFXML/regle.fxml"));
+         Parent regles = chargeurFXMLRegle.load();
+         sceneRegle = new Scene(regles);
+         sceneRegle.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
@@ -60,11 +59,25 @@ public class Main extends Application {
          primaryStage.show();
      }
      
-     /** TODO comment method role
-     * 
+     /** 
+     * Change la fenettre pour passer sur la fenetre "Règles"
      */
-     public static void chargerTest() {
-        fenetrePrincipale.setScene(sceneTest);
+     public static void chargerRegle() {
+        fenetrePrincipale.setScene(sceneRegle);
+     }
+     
+     /**
+      * Ferme l'application JavaFX
+      */
+     public static void quitterJeu() {
+         Platform.exit();
+     }
+     
+     /**
+      * Ferme l'application JavaFX
+      */
+     public static void retourAccueil() {
+         fenetrePrincipale.setScene(sceneAccueil);
      }
      
      /**

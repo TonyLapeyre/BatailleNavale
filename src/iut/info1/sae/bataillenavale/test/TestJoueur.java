@@ -49,9 +49,9 @@ class TestJoueur {
     @BeforeEach
     void initialiseJoueur() {
         listeJoueurs = new ArrayList<>();
-   /*0*/listeJoueurs.add(new Joueur("Atom"));
-   /*1*/listeJoueurs.add(new Joueur("aispikinglish"));
-   /*2*/listeJoueurs.add(new Joueur("Nivak"));
+   /*0*/listeJoueurs.add(new Joueur("Atom", "motdepasse"));
+   /*1*/listeJoueurs.add(new Joueur("aispikinglish", "azerty123456"));
+   /*2*/listeJoueurs.add(new Joueur("Nivak", "1axFz5q99"));
    }
     
     /**

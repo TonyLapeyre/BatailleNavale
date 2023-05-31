@@ -51,7 +51,12 @@ public class ControlleurAccueil {
     }
     
     @FXML
-    void chargerPageTest() {
-        Main.chargerTest();
+    void chargerPageRegle() {
+        Main.chargerRegle();
+    }
+    
+    @FXML
+    void quitterJeu() {
+        Main.quitterJeu();
     }
 }

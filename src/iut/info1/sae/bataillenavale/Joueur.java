@@ -19,6 +19,11 @@ public class Joueur {
     private String pseudo;
     
     /**
+     * mot de passe du joueur 
+     */
+    private String motDePasse;
+    
+    /**
      * Tableau de boolean initialisé avec une constante
      */
     private boolean[][] casesTirees;
@@ -44,10 +49,12 @@ public class Joueur {
     //private List<Bateau> listeBateauRestant;
 
     /**
-     * @param pseudo
+     * @param pseudo nom du joueur
+     * @param mdp mot de passe du joueur
      */
-    public Joueur(String pseudo) {
+    public Joueur(String pseudo, String mdp) {
         this.pseudo = pseudo;
+        this.motDePasse = mdp;
         
         //this.listeBateauRestant = listeBateauRestant;
         this.casesTirees = new boolean[TAILLE_STANDARD][TAILLE_STANDARD];

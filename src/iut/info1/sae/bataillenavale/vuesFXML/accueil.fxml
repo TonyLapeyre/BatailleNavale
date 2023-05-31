@@ -31,7 +31,7 @@
                   </LinearGradient>
                </fill>
             </Text>
-            <Button fx:id="btnNouvellePartie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" onAction="#chargerPageTest" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Nouvelle Partie" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnNouvellePartie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Nouvelle Partie" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>
@@ -53,7 +53,7 @@
                   <Insets top="31.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnRegles" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Règles" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnRegles" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#chargerPageRegle" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Règles" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Insets top="31.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnQuitter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Quitter" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnQuitter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#quitterJeu" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Quitter" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>

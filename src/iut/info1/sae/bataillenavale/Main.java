@@ -56,8 +56,8 @@ public class Main extends Application {
          FXMLLoader chargeurFXMLCreerJoueur = new FXMLLoader();
          chargeurFXMLCreerJoueur.setLocation(getClass().getResource("vuesFXML/creationJoueur.fxml"));
          Parent creationJoueur = chargeurFXMLCreerJoueur.load();
-         sceneRegle = new Scene(creationJoueur);
-         sceneRegle.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         sceneCreationJoueur = new Scene(creationJoueur);
+         sceneCreationJoueur.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
@@ -79,7 +79,7 @@ public class Main extends Application {
       * Change la fenettre pour passer sur la fenetre "CreationJoueur"
       */
       public static void chargerCreationJoueur() {
-         fenetrePrincipale.setScene(sceneRegle);
+         fenetrePrincipale.setScene(sceneCreationJoueur);
       }
      
      /** 

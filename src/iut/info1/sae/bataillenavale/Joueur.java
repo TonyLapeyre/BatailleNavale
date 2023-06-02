@@ -72,12 +72,21 @@ public class Joueur {
      * @param position position du bateau
      */
     public void positionnerBateau(String nom, int[][]position) {
+        for (int numB = 0; numB < listeBateauRestant.size(); numB++) {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (this.listeBateauRestant.get(numB).getPosition()[j] == position[i]) {
+                        throw new IllegalArgumentException("Les positions sont déja prise");
+                    }
+                }
+            }
+        }
         this.listeBateauRestant.add(new Bateau(nom,position));
     }
 
     /** @return valeur de pseudo */
-    public String getPseudo() {
-        return this.pseudo;
+    public String getMDP() {
+        return this.motDePasse;
     }
 
     /** @return valeur de casesTirees */

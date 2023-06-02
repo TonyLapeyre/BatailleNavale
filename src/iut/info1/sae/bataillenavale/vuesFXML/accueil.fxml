@@ -31,7 +31,7 @@
                   </LinearGradient>
                </fill>
             </Text>
-            <Button fx:id="btnNouvellePartie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Nouvelle Partie" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnNouvellePartie" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#chargerCreationJoueur" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Nouvelle Partie" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Insets bottom="5.0" />
                </padding>
             </Button>
-            <Button fx:id="btnContinuer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Continuer" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnContinuer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#continuerPartie" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="553.0" styleClass="bouton" text="Continuer" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="64.0" />
                </font>

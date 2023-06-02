@@ -15,15 +15,21 @@ public class BatailleNavale {
     
     private boolean partieFini;
     
-//    private Joueur vainqueur;
+    private Joueur vainqueur;
+    
+    private Joueur joueur1;
+    
+    private Joueur joueur2;
 
     /**
      * Constructeur de la partie
      * 
-     * @param partieFini 
+     * @param joueur1 un des deux joueurs de la partie
+     * @param joueur2 un des deux joueurs de la partie
+     * @param partieFini état de la partie
      */
-    public BatailleNavale(boolean partieFini) {
-        this.partieFini = partieFini;
+    public BatailleNavale(Joueur joueur1, Joueur joueur2) {
+        this.partieFini = false;
     }
     
     /** 
@@ -31,18 +37,8 @@ public class BatailleNavale {
      * 
      * @param vainqueur Joueur qui a gagné la partie
      */
-    private void setPartieFini(/*Joueur vainqueur*/) {
+    public void setPartieFini(Joueur vainqueur) {
         this.partieFini = true;
-//        this.vainqueur = vainqueur();
-    }
-
-    /**
-     * Fonction de lancement du jeux
-     * 
-     * @param args
-     */
-    public static void main(String[] args) {
-        
-
+        this.vainqueur = vainqueur;
     }
 }

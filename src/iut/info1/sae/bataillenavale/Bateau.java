@@ -7,7 +7,6 @@ package iut.info1.sae.bataillenavale;
 /** 
  * Représentation d'un bateau d'une bataille navale
  * @author tony.lapeyre
- * @author tom.jammes
  */
 public class Bateau {
     
@@ -20,35 +19,34 @@ public class Bateau {
     /** Coordonnées des extrémités du bateau sur la grille*/
     private int[][] position;
     
-    private String[] nomBateaux = {"Torpilleur","Contre-torpilleur", 
+    private String[] listeNomBateaux = {"Torpilleur","Contre-torpilleur", 
                     "Croiseur", "Porte-avion"};
     
     /** Initialise le bateau
-     * @param nom
-     * @param idBateau
-     * @param casesRestantes
+     * @param nomB 
      * @param position 
      */
-    public Bateau (String nom, int[][] position) {
-        if (!isValide(nom, position)) {
+    public Bateau (String nomB, int[][] position) {
+        if (!isValide(nomB, position)) {
             throw new IllegalArgumentException("Erreur, le positionnement "
                                                + "du bateau est invalide");
         }
-        this.nomB = nom;
-        this.casesRestantesB = attribuerCasesRestantes(nom);
+        this.nomB = nomB;
+        this.casesRestantesB = attribuerCasesRestantes(nomB);
         this.position = position;
     }
 
     /**
-     * TODO comment method role reach (SRP)
+     * Donne le nombre de cases initiales du bateau en fonction du nom de celui-ci
      */
     private int attribuerCasesRestantes(String nomB) {
         int nbCases;
         nbCases = 2;
-        for (int i = 0; i < nomBateaux.length; i++) {
-            if(nomB == nomBateaux[i]) {
+        for (int i = 0; i < listeNomBateaux.length; i++) {
+            if(nomB == listeNomBateaux[i]) {
                 return nbCases;
             }
+            nbCases++;
         }
         return 0; //STUB
     }
@@ -85,8 +83,8 @@ public class Bateau {
         int nbCases;
         nbCases = 1;
         
-        for (int i = 0; i < nomBateaux.length; i++) {
-            if(nom == nomBateaux[i]) {
+        for (int i = 0; i < listeNomBateaux.length; i++) {
+            if(nom == listeNomBateaux[i]) {
                 int j = 0;
                 int k = 1;
                     
@@ -123,7 +121,7 @@ public class Bateau {
         
         for (i = 0; i < position.length; i++) {
             for(j = 0; j < position[i].length; j++) {
-                if (position[i][j] < 0) {
+                if (position[i][j] < 0 || position[i][j] > 10) {
                     return false;
                 }
             }
@@ -133,12 +131,12 @@ public class Bateau {
 
     /** @return valeur de casesRestantesB */
     public int getCasesRestantesB() {
-        return casesRestantesB;
+        return this.casesRestantesB;
     }
 
-    /** @param casesRestantesB nouvelle valeur de casesRestantesB */
-    public void touche(int casesRestantesB) {
-        this.casesRestantesB = casesRestantesB;
+    /** Réduit le nombre de cases restantes quand le bateau est touché*/
+    public void touche() {
+        this.casesRestantesB--;
     }
 
     /** @return valeur de position */

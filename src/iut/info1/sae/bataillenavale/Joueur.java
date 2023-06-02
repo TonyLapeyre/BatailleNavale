@@ -8,7 +8,7 @@ import java.util.*;
 
 /** 
  * Cette classe va permettre de créer un joueur pour jouer à la bataille navale
- * @author rayanibrahime
+ * @author rayan.ibrahime
  * @author tom.jammes
  */
 public class Joueur {
@@ -46,7 +46,7 @@ public class Joueur {
     /**
      * Liste qui indique le nombre de restant au joueur 
      */
-    //private List<Bateau> listeBateauRestant;
+    private List<Bateau> listeBateauRestant;
 
     /**
      * @param pseudo nom du joueur
@@ -56,7 +56,7 @@ public class Joueur {
         this.pseudo = pseudo;
         this.motDePasse = mdp;
         
-        //this.listeBateauRestant = listeBateauRestant;
+        this.listeBateauRestant = new ArrayList<>(5);
         this.casesTirees = new boolean[TAILLE_STANDARD][TAILLE_STANDARD];
         
         for (int y = 0; y < 10; y++) {
@@ -64,6 +64,15 @@ public class Joueur {
                 this.casesTirees[x][y] = false;
             }
         }
+    }
+    
+    /** 
+     * Ajoute un nouveau bateau à la liste de bateaux restants
+     * @param nom nom du bateau
+     * @param position position du bateau
+     */
+    public void positionnerBateau(String nom, int[][]position) {
+        this.listeBateauRestant.add(new Bateau(nom,position));
     }
 
     /** @return valeur de pseudo */
@@ -99,9 +108,9 @@ public class Joueur {
     }
     
     /** @return une liste avec les bateaux non coulés*/
-    //public Bateau getListeBateauRestant() {
-        //return listeBateauRestant;
-    //}
+    public List<Bateau> getListeBateauRestant() {
+        return this.listeBateauRestant;
+    }
     
     /**
      * Action de tirer, créer un nouveau objet Tir ajouté à la liste des tirs

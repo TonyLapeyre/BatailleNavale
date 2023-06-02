@@ -49,6 +49,15 @@ public class ControlleurAccueil {
         btnQuitter.setStyle("-fx-background-color:#00359B;");
         
     }
+    @FXML
+    void chargerCreationJoueur() {
+        Main.chargerCreationJoueur();
+    }
+    
+    @FXML
+    void continuerPartie() {
+        Main.continuerPartie();
+    }
     
     @FXML
     void chargerPageRegle() {

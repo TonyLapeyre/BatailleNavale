@@ -28,6 +28,8 @@ public class Main extends Application {
      private static Stage fenetrePrincipale;
      private static Scene sceneRegle;
      private static Scene sceneAccueil;
+     private static Scene sceneCreationJoueur;
+     private static Scene sceneContinuerPartie;
      
      @Override
      public void start(Stage primaryStage) throws Exception {
@@ -50,6 +52,13 @@ public class Main extends Application {
          sceneRegle = new Scene(regles);
          sceneRegle.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
+         /* On créer la vue CreationJoueur */
+         FXMLLoader chargeurFXMLCreerJoueur = new FXMLLoader();
+         chargeurFXMLCreerJoueur.setLocation(getClass().getResource("vuesFXML/creationJoueur.fxml"));
+         Parent creationJoueur = chargeurFXMLCreerJoueur.load();
+         sceneRegle = new Scene(creationJoueur);
+         sceneRegle.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
          primaryStage.setHeight(1000);
@@ -58,6 +67,20 @@ public class Main extends Application {
          fenetrePrincipale = primaryStage;
          primaryStage.show();
      }
+     
+     /** 
+      * Change la fenettre pour passer sur la fenetre "ContinuerPartie"
+      */
+      public static void continuerPartie() {
+         fenetrePrincipale.setScene(sceneRegle);
+      }
+     
+     /** 
+      * Change la fenettre pour passer sur la fenetre "CreationJoueur"
+      */
+      public static void chargerCreationJoueur() {
+         fenetrePrincipale.setScene(sceneRegle);
+      }
      
      /** 
      * Change la fenettre pour passer sur la fenetre "Règles"

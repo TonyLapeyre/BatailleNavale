@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="titre" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="5.0" styleClass="titre" text="CHANGEMENT DE JOUEUR">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.5571428571428572" startX="1.0" startY="0.3285714285714286">
+               <stops>
+                  <Stop color="#838383" />
+                  <Stop color="#e4e4e4" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+         <font>
+            <Font name="Haettenschweiler" size="110.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez saisir votre mot de passe pour jouer" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets top="200.0" />
+         </VBox.margin>
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <PasswordField alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </PasswordField>
+   </children>
+</VBox>

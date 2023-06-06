@@ -19,8 +19,8 @@ public class Bateau {
     /** Coordonnées des extrémités du bateau sur la grille*/
     private int[][] position;
     
-    private String[] listeNomBateaux = {"Torpilleur","Contre-torpilleur", 
-                    "Croiseur", "Porte-avion"};
+    private String[] listeNomBateaux = {"Torpilleur","Contre-torpilleur",
+            "Croiseur", "Porte-avion"};
     
     /** Initialise le bateau
      * @param nomB 
@@ -80,20 +80,17 @@ public class Bateau {
      */
     private boolean nomPositionValide(String nom, int[][] position) {
         
-        int nbCases;
-        nbCases = 1;
+        int nbCases = 1;
         
         for (int i = 0; i < listeNomBateaux.length; i++) {
             if(nom == listeNomBateaux[i]) {
-                int j = 0;
-                int k = 1;
                     
-                if(position[j][j] == position[k][j]) {
-                    if(Math.abs(position[j][k] - position[k][k]) != nbCases) {
+                if(position[0][0] == position[1][0]) {
+                    if(Math.abs(position[0][1] - position[1][1]) != nbCases) {
                         return false;
                     }
                 } else {
-                    if(Math.abs(position[j][j] - position[k][j]) != nbCases) {
+                    if(Math.abs(position[0][0] - position[1][0]) != nbCases) {
                         return false;
                     }
                 }
@@ -111,16 +108,14 @@ public class Bateau {
      *         false si le bateau n'est pas correctement placé 
      */
     private boolean positionValide(int[][] position) {
-        int i = 0;
-        int j = 1;
-        
-        if(position[i][i] != position[j][i] 
-                        && position[i][j] != position[j][j]) {
+
+        if(position[0][0] != position[1][0] 
+                        && position[0][1] != position[1][1]) {
             return false;
         }
         
-        for (i = 0; i < position.length; i++) {
-            for(j = 0; j < position[i].length; j++) {
+        for (int i = 0; i < position.length; i++) {
+            for(int j = 0; j < position[i].length; j++) {
                 if (position[i][j] < 0 || position[i][j] > 10) {
                     return false;
                 }

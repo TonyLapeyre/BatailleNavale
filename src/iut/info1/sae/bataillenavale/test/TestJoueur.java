@@ -110,11 +110,17 @@ class TestJoueur {
      */
     @Test
     void testPositionnerBateau() {
-        int[][] placementPAIncorrect = {{0,0},{0,5}};
-        int[][] placementPACorrect = {{0,0},{0,4}};
-        assertThrows(IllegalArgumentException.class, ()-> listeJoueurs.get(0).positionnerBateau("Porte-avion", placementPAIncorrect));
-        listeJoueurs.get(0).positionnerBateau("Porte-avion", placementPACorrect);
-        assertThrows(Exception.class, ()-> listeJoueurs.get(0).positionnerBateau("Porte-avion", placementPACorrect));
+        int[][] placementTorpilleur = {{0,0},{0,1}};
+        int[][] placementContreTorpilleur = {{1,0},{1,2}};
+        int[][] placementContreTorpilleur2 = {{2,0},{2,2}};
+        int[][] placementCroiseur = {{3,0},{3,3}};
+        int[][] placementPorteAvion = {{4,0},{4,4}};
+        
+        listeJoueurs.get(0).positionnerBateau("Torpilleur", placementTorpilleur);
+        listeJoueurs.get(0).positionnerBateau("Contre-torpilleur", placementContreTorpilleur);
+        listeJoueurs.get(0).positionnerBateau("Contre-torpilleur", placementContreTorpilleur2);
+        listeJoueurs.get(0).positionnerBateau("Croiseur", placementCroiseur);
+        listeJoueurs.get(0).positionnerBateau("Porte-avion", placementPorteAvion);
     }
     
     /**

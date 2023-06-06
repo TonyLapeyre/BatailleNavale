@@ -30,6 +30,9 @@ public class Main extends Application {
      private static Scene sceneAccueil;
      private static Scene sceneCreationJoueur;
      private static Scene sceneContinuerPartie;
+     private static Scene scenePlacement;
+     private static Scene sceneChangementJoueur;
+     private static Scene sceneJeu;
      
      @Override
      public void start(Stage primaryStage) throws Exception {
@@ -45,19 +48,40 @@ public class Main extends Application {
          
          sceneAccueil.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
-         /* On créer la vue règles */
+         /* On crée la vue règles */
          FXMLLoader chargeurFXMLRegle = new FXMLLoader();
          chargeurFXMLRegle.setLocation(getClass().getResource("vuesFXML/regle.fxml"));
          Parent regles = chargeurFXMLRegle.load();
          sceneRegle = new Scene(regles);
          sceneRegle.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
-         /* On créer la vue CreationJoueur */
+         /* On crée la vue CreationJoueur */
          FXMLLoader chargeurFXMLCreerJoueur = new FXMLLoader();
          chargeurFXMLCreerJoueur.setLocation(getClass().getResource("vuesFXML/creationJoueur.fxml"));
          Parent creationJoueur = chargeurFXMLCreerJoueur.load();
          sceneCreationJoueur = new Scene(creationJoueur);
          sceneCreationJoueur.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
+         /* On crée la vue placementBateau */
+         FXMLLoader chargeurFXMLPlacement = new FXMLLoader();
+         chargeurFXMLPlacement.setLocation(getClass().getResource("vuesFXML/placementBateaux.fxml"));
+         Parent placement = chargeurFXMLPlacement.load();
+         scenePlacement = new Scene(placement);
+         scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
+         /* On crée la vue changementJoueur */
+         FXMLLoader chargeurFXMLChangerJoueur = new FXMLLoader();
+         chargeurFXMLChangerJoueur.setLocation(getClass().getResource("vuesFXML/changementJoueur.fxml"));
+         Parent changerJoueur= chargeurFXMLChangerJoueur.load();
+         sceneChangementJoueur = new Scene(changerJoueur);
+         sceneChangementJoueur.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
+         /* On crée la vue changementJoueur */
+         FXMLLoader chargeurFXMLJeu = new FXMLLoader();
+         chargeurFXMLJeu.setLocation(getClass().getResource("vuesFXML/jeu.fxml"));
+         Parent changerJeu = chargeurFXMLJeu.load();
+         sceneJeu = new Scene(changerJeu);
+         sceneJeu.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
@@ -69,17 +93,24 @@ public class Main extends Application {
      }
      
      /** 
-      * Change la fenettre pour passer sur la fenetre "ContinuerPartie"
+      * Change la fenetre pour passer sur la fenetre "ContinuerPartie"
       */
       public static void continuerPartie() {
-         fenetrePrincipale.setScene(sceneRegle);
+          // TODO ecrire le corps
       }
      
      /** 
-      * Change la fenettre pour passer sur la fenetre "CreationJoueur"
+      * Change la fenetre pour passer sur la fenetre "CreationJoueur"
       */
       public static void chargerCreationJoueur() {
          fenetrePrincipale.setScene(sceneCreationJoueur);
+      }
+      
+      /**
+       * Change la fenêtre pour passer sur la fenêtre "placement"
+       */
+      public static void placementBateaux() {
+          fenetrePrincipale.setScene(scenePlacement);
       }
      
      /** 
@@ -88,6 +119,20 @@ public class Main extends Application {
      public static void chargerRegle() {
         fenetrePrincipale.setScene(sceneRegle);
      }
+     
+     /** 
+      * Change la fenettre pour passer sur la fenetre "Règles"
+      */
+      public static void chargerJeu() {
+         fenetrePrincipale.setScene(sceneJeu);
+      }
+     
+     /** 
+      * Change la fenetre pour passer sur la fenetre "CreationJoueur"
+      */
+      public static void changerJoueur() {
+         fenetrePrincipale.setScene(sceneChangementJoueur);
+      }
      
      /**
       * Ferme l'application JavaFX

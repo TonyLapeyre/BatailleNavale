@@ -14,6 +14,7 @@ import javafx.scene.control.PasswordField;
  * Classe controleur qui établit un lien entre 
  * les vues en FXML et le modèle BatailleNavale
  * @author tom.jammes
+ * @author rayan.ibrahime
  */
 public class ControlleurCreationJoueur {
     
@@ -22,12 +23,16 @@ public class ControlleurCreationJoueur {
     @FXML
     private Button btnValider;
     @FXML
-    private TextField champPseudo;
+    private TextField champPseudoJ1;
     @FXML
-    private PasswordField champMotDePasse;
+    private PasswordField champMotDePasseJ1;
     @FXML
-    private PasswordField confirmationMotDePasse;
+    private TextField champPseudoJ2;
+    @FXML
+    private PasswordField champMotDePasseJ2;
+
     
+   
     @FXML
     void visualiserClick() {
         if (btnAccueil.isHover()) {
@@ -50,18 +55,22 @@ public class ControlleurCreationJoueur {
     
     @FXML
     void valider() {
-        if (0 <= champPseudo.getText().length()) {
+        if (0 >= champPseudoJ1.getText().length() 
+                || 0 >= champPseudoJ2.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vou n'avez renseigné aucun pseudo"); 
+            boiteAlerte.setHeaderText("Vous n'avez renseigné aucun pseudo"); 
             boiteAlerte.showAndWait();
-        } else if (0 <= champMotDePasse.getText().length()) {
+        } else if (0 >= champMotDePasseJ1.getText().length() 
+                || 0 >= champMotDePasseJ2.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vou n'avez renseigné aucun mot de passe"); 
+            boiteAlerte.setHeaderText("Vous n'avez renseigné aucun mot de passe"); 
             boiteAlerte.showAndWait();
-        } else if (0 <= confirmationMotDePasse.getText().length()) {
-            Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vou n'avez pas confirmé votre mot de passe"); 
-            boiteAlerte.showAndWait();
+        } else {
+            champPseudoJ1.setText(champPseudoJ1.getText());
+            champMotDePasseJ1.setText(champMotDePasseJ1.getText());
+            BatailleNavale.nouvellePartie(new Joueur(champPseudoJ1.getText(),champMotDePasseJ1.getText()), 
+                    new Joueur(champPseudoJ2.getText(),champMotDePasseJ2.getText()));
+            Main.changerJoueur();
         }
     }
 }

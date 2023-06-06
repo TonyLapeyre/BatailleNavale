@@ -30,6 +30,7 @@ public class Main extends Application {
      private static Scene sceneAccueil;
      private static Scene sceneCreationJoueur;
      private static Scene scenePlacement;
+     private static Scene sceneJeu;
      
      //private static Scene sceneContinuerPartie;
      
@@ -68,6 +69,13 @@ public class Main extends Application {
          scenePlacement = new Scene(placement);
          scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
+         /* On créer la vue du jeu */
+         FXMLLoader chargeurFXMLJeu = new FXMLLoader();
+         chargeurFXMLJeu.setLocation(getClass().getResource("vuesFXML/visuelJeu.fxml"));
+         Parent jeu = chargeurFXMLJeu.load();
+         sceneJeu = new Scene(jeu);
+         sceneJeu.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
          primaryStage.setHeight(800);
@@ -103,6 +111,13 @@ public class Main extends Application {
       */
      public static void placementBateaux() {
          fenetrePrincipale.setScene(scenePlacement);
+     }
+     
+     /**
+      * Change la fenêtre pour passer sur la fenêtre "Visueljeu"
+      */
+     public static void jeu() {
+         fenetrePrincipale.setScene(sceneJeu);
      }
      
      /**

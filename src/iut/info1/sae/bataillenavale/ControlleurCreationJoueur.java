@@ -70,7 +70,7 @@ public class ControlleurCreationJoueur {
             champMotDePasseJ1.setText(champMotDePasseJ1.getText());
             BatailleNavale.nouvellePartie1(new Joueur(champPseudoJ1.getText(),champMotDePasseJ1.getText()), 
                     new Joueur(champPseudoJ2.getText(),champMotDePasseJ2.getText()));
-            Main.placementBateaux();
+            Main.jeu();
         }
     }
 }

@@ -76,6 +76,13 @@ public class Main extends Application {
          sceneJeu = new Scene(jeu);
          sceneJeu.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
+         /* On créer la vue placement */
+         FXMLLoader chargeurFXMLChangerJoueur = new FXMLLoader();
+         chargeurFXMLPlacement.setLocation(getClass().getResource("vuesFXML/demandeMDP.fxml"));
+         Parent changerJoueur= chargeurFXMLChangerJoueur.load();
+         scenePlacement = new Scene(changerJoueur);
+         scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
          primaryStage.setHeight(800);

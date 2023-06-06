@@ -67,32 +67,42 @@ public class ControleurJeu {
          }    
      }
     
+    /**
+     * Cette méthode va convertir les coordonnées saisi par le joueur
+     * @return renvoie la conversion d'une string en integer
+     */
+    private static int conversionCoordonnee(String lettre) {
+        return lettre.toUpperCase().charAt(0)-65;
+    }
+    
     @FXML
     void validerCoordonne() {
         if (0 >= coordonneeX.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
             boiteAlerte.setHeaderText("Vous n'avez renseigné aucune coordonnée "
-                    + "pour X"); 
+                    + "pour colonne"); 
             boiteAlerte.showAndWait();
         } else if (coordonneeX.getText().length() > 1) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour X "
+            boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour colonne "
                     + "non prsie en compte"); 
             boiteAlerte.showAndWait();
         } else if (0 >= coordonneeY.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
             boiteAlerte.setHeaderText("Vous n'avez renseigné aucune coordonnée "
-                    + "pour Y"); 
+                    + "pour ligne"); 
             boiteAlerte.showAndWait();
         } else if (coordonneeY.getText().length() > 1) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour Y "
+            boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour ligne "
                     + "non prsie en compte");
             boiteAlerte.showAndWait();
         } else {
-            int cordX = Integer.parseInt(coordonneeX.getText());
-            int cordY = Integer.parseInt(coordonneeY.getText());
+            int cordX = conversionCoordonnee(coordonneeX.getText());
+            int cordY = Integer.valueOf(coordonneeY.getText()) - 1;
             BatailleNavale.tirer(cordX, cordY);
-        }
+        }      
     }
+    
+    
 }

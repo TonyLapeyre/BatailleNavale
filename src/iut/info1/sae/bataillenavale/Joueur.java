@@ -6,10 +6,13 @@ package iut.info1.sae.bataillenavale;
 
 import java.util.*;
 
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+
 /** 
  * Cette classe va permettre de créer un joueur pour jouer à la bataille navale
- * @author rayanibrahime
- *
+ * @author rayan.ibrahime
+ * @author tom.jammes
  */
 public class Joueur {
     
@@ -19,55 +22,98 @@ public class Joueur {
     private String pseudo;
     
     /**
-     * Tableau de boolean initialisé avec une constante
+     * mot de passe du joueur 
      */
-    private boolean[][] tirEffectuer;
+    private String motDePasse;
     
     /**
-     * Tableau qui initialise tirEffectuer
+     * Tableau de boolean initialisé avec une constante
      */
-    final private static boolean[][] TIR_INITIALE = {
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-            {false,false,false,false,false,false,false,false,false,false},
-    };
+    private boolean[][] casesTirees;
+    
+    /**
+     * Taille de la grille standard
+     */
+    private final int TAILLE_STANDARD = 10;
+    
+    /**
+     * Liste des tirs effectué
+     */
+    private List<Tir> listeTirsEffectue = new ArrayList<>(100);
+    
+    /**
+     * Nombre de tir effectué
+     */
+    private int nbTirEffectue;
     
     /**
      * Liste qui indique le nombre de restant au joueur 
      */
-    //private List<Bateau> listeBateauRestant;
+    private List<Bateau> listeBateauRestant;
 
     /**
-     * @param pseudo
+     * @param pseudo nom du joueur
+     * @param motDePasse mot de passe du joueur
      */
-    public Joueur(String pseudo) {
+    public Joueur(String pseudo, String motDePasse) {
         this.pseudo = pseudo;
-        this.tirEffectuer = TIR_INITIALE;
-        //this.listeBateauRestant = listeBateauRestant;
+        this.motDePasse = motDePasse;
+        
+        this.listeBateauRestant = new ArrayList<>(5);
+        this.casesTirees = new boolean[TAILLE_STANDARD][TAILLE_STANDARD];
+        
+        for (int y = 0; y < 10; y++) {
+            for (int x = 0; x < 10; x++) {
+                this.casesTirees[x][y] = false;
+            }
+        }
+    }
+    
+    /** 
+     * Ajoute un nouveau bateau à la liste de bateaux restants
+     * @param nom nom du bateau
+     * @param position position du bateau
+     */
+    public void positionnerBateau(String nom, int[][]position) {
+        for (int numB = 0; numB < listeBateauRestant.size(); numB++) {
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    if (this.listeBateauRestant.get(numB).getPosition()[j] == position[i]) {
+                        throw new IllegalArgumentException("Les positions sont déja prise");
+                    }
+                }
+            }
+        }
+        this.listeBateauRestant.add(new Bateau(nom,position));
+    }
+    
+    /** @return valeur de pseudo */
+    public String getPseudo() {
+        return this.pseudo;
     }
 
     /** @return valeur de pseudo */
-    public String getPseudo() {
-        return pseudo;
+    public String getMDP() {
+        return this.motDePasse;
     }
 
-    /** @return valeur de tirEffectuer */
-    public boolean[][] getTirEffectuer() {
-        return this.tirEffectuer;
+    /** @return valeur de casesTirees */
+    public boolean[][] getCasesTirees() {
+        return this.casesTirees;
+    }
+    
+    /** @return valeur de nbTirEffectué */
+    public int getNbTirEffectue() {
+        return this.nbTirEffectue;
     }
 
-    /** @param x abscisse 
-     *  @param y ordonnée
-     *  @param tirEffectuer nouvelle valeur de tirEffectuer */
-    public void setTirEffectuer(int x, int y) {
-            this.tirEffectuer[x][y] = true;
+    /** 
+     * casesTirees nouvelle valeur de casesTirees 
+     * @param x abscisse du tir
+     * @param y ordonné du tir
+     */
+    private void setTirEffectuer(int x, int y) {
+        this.casesTirees[x][y] = true;
     }
     
     /**
@@ -79,7 +125,24 @@ public class Joueur {
     }
     
     /** @return une liste avec les bateaux non coulés*/
-    //public Bateau getListeBateauRestant() {
-        //return listeBateauRestant;
-    //}
+    public List<Bateau> getListeBateauRestant() {
+        return this.listeBateauRestant;
+    }
+    
+    /**
+     * Action de tirer, créer un nouveau objet Tir ajouté à la liste des tirs
+     * @param x abscisse du tir
+     * @param y ordonné du tir
+     * @throws IllegalArgumentException si les coordonnées du tir ont déjà été 
+     *                                  effectué pour un autre tir
+     */
+    public void tirer(int x, int y) throws IllegalArgumentException {
+        if (this.casesTirees[x][y]) {
+            throw new IllegalArgumentException(
+                    "Les coordonnées ont deja été utilisé pour un autre tir");
+            
+        }
+        this.setTirEffectuer(x,y);            
+        this.listeTirsEffectue.add(new Tir(x,y,false));
+    }
 }

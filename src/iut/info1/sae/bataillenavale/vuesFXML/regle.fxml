@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iut.info1.sae.bataillenavale.ControlleurRegles">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Règles" textAlignment="CENTER">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <font>
+            <Font name="System Bold" size="72.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La bataille navale oppose deux joueurs.">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chaque joueur dispose de deux grilles carrées de côté 10, dont les ">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="lignes sont numérotées de 1 à 10 et les colonnes de A à J, ainsi que d'une flotte composée de quelques">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="navires de deux à cinq cases de long.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La première grille représente la zone contenant sa propre flotte">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La seconde grille représente la zone adverse, où il cherchera à couler les navires de son adversaire.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Au début du jeu, chaque joueur place tous ses navires sur sa première grille.">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Une fois que les deux joueurs ont terminé de placer leurs navires, la partie peut commencer.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Les navires ne peuvent être placés que horizontalement ou verticalement (pas en diagonale), ">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="et ne doivent pas être adjacents à un autre navire.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Le premier joueur est tiré au hasard.">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="A son tour, le joueur sélectionne une case de la zone adverse pour y effectuer son tir.">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Il est interdit de tirer deux fois au même endroit.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Un navire est coulé lorsque toutes ses cases ont été touchées.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Le gagnant est le joueur qui parvient à couler en premier tous les navires de l'adversaire,">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ou si le joueur adverse abandonne la partie.">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnAccueil" mnemonicParsing="false" onAction="#retourAccueil" onMousePressed="#visualiserClick" onMouseReleased="#visualiserNonClick" prefHeight="106.0" prefWidth="453.0" styleClass="bouton" text="Accueil" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="64.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

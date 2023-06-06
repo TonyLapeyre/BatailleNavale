@@ -41,6 +41,8 @@ public class Bateau {
 
     /**
      * Donne le nombre de cases initiales du bateau en fonction du nom de celui-ci
+     * @param nomB le nom du bateau
+     * @return nbCases le nombre de cases prises par un bateau spécifique
      */
     private int attribuerCasesRestantes(String nomB) {
         int nbCases;
@@ -87,16 +89,16 @@ public class Bateau {
         nbCases = 1;
         
         for (int i = 0; i < listeNomBateaux.length; i++) {
-            if(nom == listeNomBateaux[i]) {
-                int j = 0;
-                int k = 1;
-                    
-                if(position[j][j] == position[k][j]) {
-                    if(Math.abs(position[j][k] - position[k][k]) != nbCases) {
+            if(nom == listeNomBateaux[i]) { 
+                
+                /* Vérifie en cas d'horizontalité le nombre de cases exactes */
+                if(position[0][0] == position[1][0]) {
+                    if(Math.abs(position[0][1] - position[1][1]) != nbCases) {
                         return false;
                     }
+                /* Vérifie en cas de verticalité le nombre de cases exactes */
                 } else {
-                    if(Math.abs(position[j][j] - position[k][j]) != nbCases) {
+                    if(Math.abs(position[0][0] - position[1][0]) != nbCases) {
                         return false;
                     }
                 }
@@ -117,14 +119,16 @@ public class Bateau {
         int i = 0;
         int j = 1;
         
+        /* Vérifie l'horizontalité ou la verticalité des bateaux */
         if(position[i][i] != position[j][i] 
                         && position[i][j] != position[j][j]) {
             return false;
         }
         
+        /* Vérifie si les coordonnées rentrées font partie de la grille */
         for (i = 0; i < position.length; i++) {
             for(j = 0; j < position[i].length; j++) {
-                if (position[i][j] < 0 || position[i][j] > 10) {
+                if (position[i][j] < 0 || position[i][j] > 9) {
                     return false;
                 }
             }
@@ -137,7 +141,7 @@ public class Bateau {
         return this.casesRestantesB;
     }
 
-    /** Réduit le nombre de cases restantes quand le bateau est touché*/
+    /** Réduit le nombre de cases restantes quand le bateau est touché */
     public void touche() {
         this.casesRestantesB--;
     }

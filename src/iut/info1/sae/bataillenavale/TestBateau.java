@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -95,12 +94,18 @@ class TestBateau {
                     {2,0}
     };
     
+    private int[][] coordonneesEgales = {
+                    {5,5},
+                    {5,5}
+    };
+    
     private List<Bateau> correctes;
     
     @BeforeEach
     void setUp() {
         correctes = new ArrayList<>(15);
-        //TODO add valid boats
+        
+        /* Ajout de bateaux valides horizontalement et verticalement */
         correctes.add(new Bateau("Torpilleur", TValide));
         correctes.add(new Bateau("Torpilleur", TValide2));
         correctes.add(new Bateau("Contre-torpilleur", CTValide));
@@ -109,8 +114,6 @@ class TestBateau {
         correctes.add(new Bateau("Croiseur", CValide2));
         correctes.add(new Bateau("Porte-avion", PAValide));
         correctes.add(new Bateau("Porte-avion", PAValide2));
-        
-        
     }
     
     /**
@@ -120,12 +123,27 @@ class TestBateau {
     @Test
     void testBateauStringIntIntNOk() {
         
+        /* Vérifie la propagation de l'exception avec des coordonnées égales */
+        assertThrows(IllegalArgumentException.class, 
+                            () -> new Bateau("Porte-avion", coordonneesEgales));
+        
+        /* 
+         * Vérifie la propagation de l'exception 
+         * avec un placement non vertical et non horizontal
+         */
         assertThrows(IllegalArgumentException.class, 
                             () -> new Bateau("Porte-avion", placementIncorrect1));
+        
+        /* Vérifie la propagation de l'exception avec une des coordonnnées dépassant la grille */
         assertThrows(IllegalArgumentException.class, 
                             () -> new Bateau("Croiseur", placementIncorrect2));
         assertThrows(IllegalArgumentException.class, 
                             () -> new Bateau("Contre-torpilleur", placementIncorrect3));
+        
+        /* 
+         * Vérifie la propagation de l'exception 
+         * avec des coordonnées invalides par rapport aux caractéristiques du bateau 
+         */
         assertThrows(IllegalArgumentException.class, 
                             () -> new Bateau("Porte-avion", PAInvalide));
         assertThrows(IllegalArgumentException.class, 
@@ -148,7 +166,7 @@ class TestBateau {
     void testGetCasesRestantesB() {
         final int[] CORRECTES = {2,2,3,3,4,4,5,5};
         for(int i = 0; i < correctes.size(); i++) {
-            assertEquals(CORRECTES[i], correctes.get(i).getCasesRestantesB());  
+            assertEquals(CORRECTES[i], correctes.get(i).getCasesRestantesB());
         }
     }
 
@@ -157,7 +175,11 @@ class TestBateau {
      */
     @Test
     void testTouche() {
-        fail("Not yet implemented");
+        final int[] CORRECTES = {1,1,2,2,3,3,4,4};
+        for(int i = 0; i < correctes.size(); i++) {
+            correctes.get(i).touche();
+            assertEquals(CORRECTES[i], correctes.get(i).getCasesRestantesB());
+        }
     }
 
     /**
@@ -175,7 +197,6 @@ class TestBateau {
                     {0,0},{0,4},
                     {3,4},{7,4}
         };
-        
         int k;
         int iCorrectes;
         

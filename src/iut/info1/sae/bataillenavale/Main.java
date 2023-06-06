@@ -30,6 +30,8 @@ public class Main extends Application {
      private static Scene sceneAccueil;
      private static Scene sceneCreationJoueur;
      private static Scene scenePlacement;
+     private static Scene sceneJeu;
+     private static Scene sceneDemandeMDP;
      
      //private static Scene sceneContinuerPartie;
      
@@ -61,19 +63,26 @@ public class Main extends Application {
          sceneCreationJoueur = new Scene(creationJoueur);
          sceneCreationJoueur.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
-         /* On créer la vue placement */
+         /* On créer la vue CreationJoueur */
          FXMLLoader chargeurFXMLPlacement = new FXMLLoader();
          chargeurFXMLPlacement.setLocation(getClass().getResource("vuesFXML/placement.fxml"));
          Parent placement = chargeurFXMLPlacement.load();
          scenePlacement = new Scene(placement);
          scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
+         /* On créer la vue du jeu */
+         FXMLLoader chargeurFXMLJeu = new FXMLLoader();
+         chargeurFXMLJeu.setLocation(getClass().getResource("vuesFXML/visuelJeu.fxml"));
+         Parent jeu = chargeurFXMLJeu.load();
+         sceneJeu = new Scene(jeu);
+         sceneJeu.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         
          /* On créer la vue placement */
          FXMLLoader chargeurFXMLChangerJoueur = new FXMLLoader();
-         chargeurFXMLPlacement.setLocation(getClass().getResource("vuesFXML/demandeMDP.fxml"));
+         chargeurFXMLChangerJoueur.setLocation(getClass().getResource("vuesFXML/demandeMDP.fxml"));
          Parent changerJoueur= chargeurFXMLChangerJoueur.load();
-         scenePlacement = new Scene(changerJoueur);
-         scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         sceneDemandeMDP = new Scene(changerJoueur);
+         sceneDemandeMDP.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
@@ -113,6 +122,13 @@ public class Main extends Application {
      }
      
      /**
+      * Change la fenêtre pour passer sur la fenêtre "Visueljeu"
+      */
+     public static void jeu() {
+         fenetrePrincipale.setScene(sceneJeu);
+     }
+     
+     /**
       * Ferme l'application JavaFX
       */
      public static void quitterJeu() {
@@ -127,11 +143,12 @@ public class Main extends Application {
      }
      
      /**
-      * 
+      * Change la fenêtre pour passer sur la fenêtre "demandeMDP"
       */
      public static void changerJoueur() {
-         
+         fenetrePrincipale.setScene(sceneDemandeMDP);
      }
+     
      /**
      * Lancement de l'application
      * @param args argument non utilisé

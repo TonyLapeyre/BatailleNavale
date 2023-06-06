@@ -64,12 +64,12 @@ public class BatailleNavale {
     public static void changerJoueurActif(String mdpJoueurNonActif) throws Exception {
         if (joueurActif == joueur1) {
             if (joueur2.getMDP() == mdpJoueurNonActif) {
-                throw new Exception(); // TODO créer une exception spécifique
+                throw new IllegalArgumentException(); // TODO créer une exception spécifique
             }
             joueurActif = joueur2;
         } else {
             if (joueur1.getMDP() == mdpJoueurNonActif) {
-                throw new Exception(); // TODO créer une exception spécifique
+                throw new IllegalArgumentException(); // TODO créer une exception spécifique
             }
             joueurActif = joueur1;
         }

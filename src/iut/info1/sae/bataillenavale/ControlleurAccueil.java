@@ -59,4 +59,9 @@ public class ControlleurAccueil {
     void quitterJeu() {
         Main.quitterJeu();
     }
+    
+    @FXML 
+    void nouvellePartie() {
+        Main.chargerCreationJoueur();
+    }
 }

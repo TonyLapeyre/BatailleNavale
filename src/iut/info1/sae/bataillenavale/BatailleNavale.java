@@ -56,6 +56,22 @@ public class BatailleNavale {
         joueurActif.tirer(x, y);
     }
     
+    /**
+     * TODO comment method role
+     * @return renvoie la valeur de 1
+     */
+    public static String motDePasseJ1() {
+        return joueur1.getMDP();
+    }
+    
+    /**
+     * TODO comment method role
+     * @return renvoie la valeur de 1
+     */
+    public static String motDePasseJ2() {
+        return joueur2.getMDP();
+    }
+    
     /** 
      * Change le joueur actif
      * @param mdpJoueurNonActif mot de passe du joueur qui souhaite prendre la main
@@ -64,12 +80,12 @@ public class BatailleNavale {
     public static void changerJoueurActif(String mdpJoueurNonActif) throws Exception {
         if (joueurActif == joueur1) {
             if (joueur2.getMDP() == mdpJoueurNonActif) {
-                throw new Exception(); // TODO créer une exception spécifique
+                throw new IllegalArgumentException("Veuillez ressaisir le mdp"); 
             }
             joueurActif = joueur2;
         } else {
             if (joueur1.getMDP() == mdpJoueurNonActif) {
-                throw new Exception(); // TODO créer une exception spécifique
+                throw new IllegalArgumentException("Veuillez ressaisir le mdp");
             }
             joueurActif = joueur1;
         }

@@ -31,6 +31,7 @@ public class Main extends Application {
      private static Scene sceneCreationJoueur;
      private static Scene scenePlacement;
      private static Scene sceneJeu;
+     private static Scene sceneDemandeMDP;
      
      //private static Scene sceneContinuerPartie;
      
@@ -78,10 +79,10 @@ public class Main extends Application {
          
          /* On créer la vue placement */
          FXMLLoader chargeurFXMLChangerJoueur = new FXMLLoader();
-         chargeurFXMLPlacement.setLocation(getClass().getResource("vuesFXML/demandeMDP.fxml"));
+         chargeurFXMLChangerJoueur.setLocation(getClass().getResource("vuesFXML/demandeMDP.fxml"));
          Parent changerJoueur= chargeurFXMLChangerJoueur.load();
-         scenePlacement = new Scene(changerJoueur);
-         scenePlacement.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+         sceneDemandeMDP = new Scene(changerJoueur);
+         sceneDemandeMDP.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
          
          // on définit le titre, la hauteur et la largeur de la fenêtre
          primaryStage.setTitle("Bataille Navale");
@@ -139,6 +140,13 @@ public class Main extends Application {
       */
      public static void retourAccueil() {
          fenetrePrincipale.setScene(sceneAccueil);
+     }
+     
+     /**
+      * Change la fenêtre pour passer sur la fenêtre "demandeMDP"
+      */
+     public static void changerJoueur() {
+         fenetrePrincipale.setScene(sceneDemandeMDP);
      }
      
      /**

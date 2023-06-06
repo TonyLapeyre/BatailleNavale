@@ -92,7 +92,7 @@ public class Joueur {
         return this.pseudo;
     }
 
-    /** @return valeur de pseudo */
+    /** @return valeur du mot de passe */
     public String getMDP() {
         return this.motDePasse;
     }

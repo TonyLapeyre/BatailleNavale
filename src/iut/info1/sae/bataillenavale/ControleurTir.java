@@ -17,7 +17,7 @@ import javafx.scene.control.ButtonType;
  * @author rayanibrahime
  *
  */
-public class ControleurJeu {
+public class ControleurTir {
     
     @FXML
     private MenuItem abandon;
@@ -32,7 +32,7 @@ public class ControleurJeu {
     private TextField coordonneeY;
     
     @FXML
-    void abandonDeLaPartie() {
+    void abandonPartie() {
         /*
          * Création d'une boîte d'alerte de type confirmation.
          * Elle est dotée de 3 boutons : oui et annuler
@@ -50,7 +50,7 @@ public class ControleurJeu {
     }
     
     @FXML
-    void QuitterLeJeu() {
+    void QuitterJeu() {
         /*
          * Création d'une boîte d'alerte de type confirmation.
          * Elle est dotée de 3 boutons : oui et annuler
@@ -101,7 +101,8 @@ public class ControleurJeu {
             int cordX = conversionCoordonnee(coordonneeX.getText());
             int cordY = Integer.valueOf(coordonneeY.getText()) - 1;
             BatailleNavale.tirer(cordX, cordY);
-        }      
+            Main.changerJoueur();
+        }
     }
     
     

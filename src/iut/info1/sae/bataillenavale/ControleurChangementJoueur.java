@@ -20,7 +20,7 @@ public class ControleurChangementJoueur {
     private Button btnValider;
     
     @FXML
-    private PasswordField champMDP;
+    private PasswordField saisiMDP;
     
     @FXML
     void visualiserClick() {
@@ -35,14 +35,16 @@ public class ControleurChangementJoueur {
     }
     
     @FXML 
-    void poursuiteJeu() throws Exception {
-        if (0 >= champMDP.getText().length()) {
-            Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
-            boiteAlerte.setHeaderText("Vous n'avez renseigné aucun mot de passe"); 
-            boiteAlerte.showAndWait();
-        }
-        BatailleNavale.changerJoueurActif(champMDP.getText());
-        Main.changerJoueur();
+    void poursuiteJeu() {
+        do {
+            if (BatailleNavale.motDePasseJ1() != saisiMDP.getText()) {
+                Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
+                boiteAlerte.setHeaderText("Recommencez vous n'avez pas saisi votre "
+                        + "mot de passe initial"); 
+                boiteAlerte.showAndWait();
+            }
+            saisiMDP.
+        } while(BatailleNavale.motDePasseJ1() != saisiMDP.getText());
+        Main.chargerCreationJoueur();;
     }
-
 }

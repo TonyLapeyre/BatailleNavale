@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iut.info1.sae.bataillenavale.ControleurJeu">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iut.info1.sae.bataillenavale.ControleurTir">
 
 
 
@@ -70,7 +70,7 @@
 
  
 
- <MenuItem fx:id="abandon" mnemonicParsing="false" onAction="#abandonDeLaPartie" text="Abandonner" />
+ <MenuItem fx:id="abandon" mnemonicParsing="false" onAction="#abandonPartie" text="Abandonner" />
 
 
 
@@ -78,7 +78,7 @@
 
  
 
- <MenuItem fx:id="quitter" mnemonicParsing="false" onAction="#QuitterLeJeu" text="Quitter" />
+ <MenuItem fx:id="quitter" mnemonicParsing="false" onAction="#QuitterJeu" text="Quitter" />
 
 
 

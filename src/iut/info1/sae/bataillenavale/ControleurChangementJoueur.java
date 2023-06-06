@@ -35,7 +35,7 @@ public class ControleurChangementJoueur {
     }
     
     @FXML 
-    void poursuiteJeu() {
+    void poursuiteJeu() throws Exception {
         if (0 >= champMDP.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
             boiteAlerte.setHeaderText("Vous n'avez renseigné aucun mot de passe"); 

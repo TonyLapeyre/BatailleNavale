@@ -1,0 +1,38 @@
+/*
+ * ControleurRegles.java                                      26 mai 2023
+ * IUT Rodez, info1 2022-2023, pas de copyright ni "copyleft" 
+ */
+package iut.info1.sae.bataillenavale;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
+/**
+ * Classe contrôleur qui établit un lien entre 
+ * la vue regles.fxml en FXML et le modèle BatailleNavale
+ * @author tom.jammes
+ */
+public class ControleurRegles {
+    
+    /* Bouton qui fait revenir à l'accueil */
+    @FXML
+    private Button btnAccueil;
+    
+    @FXML
+    void visualiserClick() {
+        if (btnAccueil.isHover()) {
+            btnAccueil.setStyle("-fx-background-color:#00266F;");
+        }
+    }
+    
+    @FXML
+    void visualiserNonClick() {
+        btnAccueil.setStyle("-fx-background-color:#00359B;");
+    }
+    
+    /* Lie le bouton btnAccueil à la méthode */
+    @FXML
+    void retourAccueil() {
+        Main.retourAccueil();
+    }
+}

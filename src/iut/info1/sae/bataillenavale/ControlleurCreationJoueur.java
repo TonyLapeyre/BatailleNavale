@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 
 /**
- * Classe controleur qui établit un lien entre 
+ * Classe contrôleur qui établit un lien entre 
  * les vues en FXML et le modèle BatailleNavale
  * @author tom.jammes
  * @author rayan.ibrahime
@@ -68,9 +68,9 @@ public class ControlleurCreationJoueur {
         } else {
             champPseudoJ1.setText(champPseudoJ1.getText());
             champMotDePasseJ1.setText(champMotDePasseJ1.getText());
-            BatailleNavale.nouvellePartie1(new Joueur(champPseudoJ1.getText(),champMotDePasseJ1.getText()), 
+            BatailleNavale.nouvellePartie(new Joueur(champPseudoJ1.getText(),champMotDePasseJ1.getText()), 
                     new Joueur(champPseudoJ2.getText(),champMotDePasseJ2.getText()));
-            Main.jeu();
+            Main.changerJoueur();
         }
     }
 }

@@ -11,12 +11,12 @@ package iut.info1.sae.bataillenavale;
 public class Tir {
     
     /**
-     * abscice du tir
+     * Abscisse du tir
      */
     private int x;
     
     /**
-     * ordonné du tir
+     * Ordonné du tir
      */
     private int y;
     

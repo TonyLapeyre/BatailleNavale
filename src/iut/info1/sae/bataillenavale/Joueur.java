@@ -6,9 +6,6 @@ package iut.info1.sae.bataillenavale;
 
 import java.util.*;
 
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-
 /** 
  * Cette classe va permettre de créer un joueur pour jouer à la bataille navale
  * @author rayan.ibrahime
@@ -53,11 +50,11 @@ public class Joueur {
 
     /**
      * @param pseudo nom du joueur
-     * @param motDePasse mot de passe du joueur
+     * @param mdp mot de passe du joueur
      */
-    public Joueur(String pseudo, String motDePasse) {
+    public Joueur(String pseudo, String mdp) {
         this.pseudo = pseudo;
-        this.motDePasse = motDePasse;
+        this.motDePasse = mdp;
         
         this.listeBateauRestant = new ArrayList<>(5);
         this.casesTirees = new boolean[TAILLE_STANDARD][TAILLE_STANDARD];
@@ -75,21 +72,69 @@ public class Joueur {
      * @param position position du bateau
      */
     public void positionnerBateau(String nom, int[][]position) {
+        positionValide(position);
+        this.listeBateauRestant.add(new Bateau(nom,position));
+    }
+
+    /** 
+     * Vérifie que le bateau n'entre pas en collision avec un autre bateau
+     */
+    private void positionValide(int[][] position) {
         for (int numB = 0; numB < listeBateauRestant.size(); numB++) {
-            for (int i = 0; i < 2; i++) {
-                for (int j = 0; j < 2; j++) {
-                    if (this.listeBateauRestant.get(numB).getPosition()[j] == position[i]) {
-                        throw new IllegalArgumentException("Les positions sont déja prise");
+            if (position[0][0] == position[1][0]) {
+                if (listeBateauRestant.get(numB).getPosition()[0][0] 
+                        == listeBateauRestant.get(numB).getPosition()[1][0]
+                         && position[0][0] 
+                         == listeBateauRestant.get(numB).getPosition()[0][0]) {
+                    for (int y = position[0][1]; y < position[1][1]; y++) {
+                        if (listeBateauRestant.get(numB).getPosition()[0][1] <= y 
+                            && y <= listeBateauRestant.get(numB).getPosition()[1][1]) {
+                            throw new IllegalArgumentException(
+                                    "Ce bateau chevauche un autre bateau");
+                        }
+                    }
+                } else {
+                    for (int y = position[0][0]; y < position[1][0]; y++) {
+                        if (y == listeBateauRestant.get(numB).getPosition()[0][1]) {
+                            for (int x = listeBateauRestant.get(numB).getPosition()[0][0];
+                                    x < listeBateauRestant.get(numB).getPosition()[1][0];
+                                    x++) {
+                               if (x == position[0][0]) {
+                                   throw new IllegalArgumentException(
+                                           "Ce bateau chevauche un autre bateau");
+                               }
+                            }  
+                        }
+                    }
+                }
+            } else {
+                if (listeBateauRestant.get(numB).getPosition()[0][0] 
+                        == listeBateauRestant.get(numB).getPosition()[1][0]) {
+                    for (int x = position[0][0]; x < position[1][0]; x++) {
+                        if (x == listeBateauRestant.get(numB).getPosition()[0][0]) {
+                            for (int y = listeBateauRestant.get(numB).getPosition()[0][1];
+                                    y < listeBateauRestant.get(numB).getPosition()[1][1];
+                                    y++) {
+                               if (y == position[0][1]) {
+                                   throw new IllegalArgumentException(
+                                           "Ce bateau chevauche un autre bateau");
+                               }
+                            }  
+                        }
+                    }
+                } else {
+                    if (position[0][1] == listeBateauRestant.get(numB).getPosition()[0][1]) {
+                        for (int x = position[0][0]; x < position[1][1]; x++) {
+                            if (listeBateauRestant.get(numB).getPosition()[0][0] <= x 
+                                && x <= listeBateauRestant.get(numB).getPosition()[1][0]) {
+                                throw new IllegalArgumentException(
+                                        "Ce bateau chevauche un autre bateau");
+                            }
+                        }
                     }
                 }
             }
-        }
-        this.listeBateauRestant.add(new Bateau(nom,position));
-    }
-    
-    /** @return valeur de pseudo */
-    public String getPseudo() {
-        return this.pseudo;
+        }        
     }
 
     /** @return valeur de pseudo */
@@ -144,5 +189,19 @@ public class Joueur {
         }
         this.setTirEffectuer(x,y);            
         this.listeTirsEffectue.add(new Tir(x,y,false));
+    }
+   
+    /** @return valeur de pseudo */
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    /* non javadoc - @see java.lang.Object#equals(java.lang.Object) */
+    /** 
+     * @param pseudoJoueur pseudo à comparer
+     * @return true si les deux pseudo sont les même
+     */
+    public boolean pseudoEgaux(String pseudoJoueur) {
+        return this.pseudo.equals(pseudoJoueur);
     }
 }

@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 /**
- * Classe controleur qui établit un lien entre 
+ * Classe contrôleur qui établit un lien entre 
  * les vues en FXML et le modèle BatailleNavale
  * @author tom.jammes
  */

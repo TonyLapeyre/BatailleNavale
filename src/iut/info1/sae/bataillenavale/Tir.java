@@ -16,7 +16,7 @@ public class Tir {
     private int x;
     
     /**
-     * ordonné du tir
+     * ordonnée du tir
      */
     private int y;
     
@@ -33,7 +33,7 @@ public class Tir {
      */
     public Tir(int x, int y, boolean tirReussi) {
         if (!isValide(x, y)) {
-            throw new IllegalArgumentException("Les coordonnés fournit sont incorrectes");
+            throw new IllegalArgumentException("Les coordonnées fournit sont incorrectes");
         }
         this.x = x;
         this.y = y;
@@ -41,7 +41,7 @@ public class Tir {
     }
    
     /**
-     * Vérifie que les coordonné entrées pour le tir sont correctes :
+     * Vérifie que les coordonnées entrées pour le tir sont correctes :
      * Elles doivent se situer entre 0 et 9 
      * @param x coordonné x du tir
      * @param y coordonné y du tir

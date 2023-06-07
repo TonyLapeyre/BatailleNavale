@@ -19,15 +19,19 @@ import javafx.scene.control.ButtonType;
  */
 public class ControleurTir {
     
+    /* Option du menu abandonner */
     @FXML
     private MenuItem abandon;
     
+    /* Option du menu quitter */
     @FXML
     private MenuItem quitter;
     
+    /* Zone de texte pour coordonnée x */
     @FXML
     private TextField coordonneeX;
     
+    /* Zone de texte pour coordonnée y */
     @FXML
     private TextField coordonneeY;
     
@@ -35,7 +39,7 @@ public class ControleurTir {
     void abandonPartie() {
         /*
          * Création d'une boîte d'alerte de type confirmation.
-         * Elle est dotée de 3 boutons : oui et annuler
+         * Elle est dotée de 2 boutons : oui et annuler
          */
          Alert boiteAlerte = new Alert(Alert.AlertType.CONFIRMATION,
          "Confirmez-vous votre choix d'abandonner la partie?",
@@ -53,7 +57,7 @@ public class ControleurTir {
     void QuitterJeu() {
         /*
          * Création d'une boîte d'alerte de type confirmation.
-         * Elle est dotée de 3 boutons : oui et annuler
+         * Elle est dotée de 2 boutons : oui et annuler
          */
          Alert boiteAlerte = new Alert(Alert.AlertType.CONFIRMATION,
          "Confirmez-vous votre choix de quitter le jeu?",
@@ -68,7 +72,7 @@ public class ControleurTir {
      }
     
     /**
-     * Cette méthode va convertir les coordonnées saisi par le joueur
+     * Cette méthode va convertir les coordonnées saisies par le joueur
      * @return renvoie la conversion d'une string en integer
      */
     private static int conversionCoordonnee(String lettre) {
@@ -85,7 +89,7 @@ public class ControleurTir {
         } else if (coordonneeX.getText().length() > 1) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
             boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour colonne "
-                    + "non prsie en compte"); 
+                    + "non prise en compte"); 
             boiteAlerte.showAndWait();
         } else if (0 >= coordonneeY.getText().length()) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
@@ -95,13 +99,12 @@ public class ControleurTir {
         } else if (coordonneeY.getText().length() > 1) {
             Alert boiteAlerte = new Alert(Alert.AlertType.WARNING);
             boiteAlerte.setHeaderText("Vous avez renseigné une coordonnée pour ligne "
-                    + "non prsie en compte");
+                    + "non prise en compte");
             boiteAlerte.showAndWait();
         } else {
             int cordX = conversionCoordonnee(coordonneeX.getText());
             int cordY = Integer.valueOf(coordonneeY.getText()) - 1;
             BatailleNavale.tirer(cordX, cordY);
-//            Main.changerJoueur();
         }
     }
     
